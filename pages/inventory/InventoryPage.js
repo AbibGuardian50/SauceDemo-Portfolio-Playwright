@@ -1,65 +1,71 @@
 export class InventoryPage {
     constructor(page) {
-        this.filterOptions = {
+        this.sortValues = {
             nameAsc: 'az',
             nameDesc: 'za',
             priceAsc: 'lohi',
             priceDesc: 'hilo',
-        }
-        this.shoppingCart = page.locator('[data-test="shopping-cart-link"]')
-        this.addToCartSauceLabsBackpack = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]')
-        this.removeFromCartSauceLabsBackpack = page.locator('[data-test="remove-sauce-labs-backpack"]')
-        this.addToCartSauceLabsBikeLight = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]')
-        this.removeFromCartSauceLabsBikeLight = page.locator('[data-test="remove-sauce-labs-bike-light"]')
-        this.titleSauceLabsBackpack = page.locator('[aria-label="View details for Sauce Labs Backpack"]')
-        this.imageSauceLabsBackpack = page.locator('[data-test="inventory-item-sauce-labs-backpack-img"]')
-        this.addToCartProductDetails = locator('[data-test="add-to-cart"]')
-        this.removeFromCartProductDetails = locator('[data-test="remove"]')
-        this.backToProducts = locator('[data-test="back-to-products"]')
-        this.filterOptions = locator('[data-test="product_sort_container"]')
+        };
+
+        this.shoppingCartIcon = page.locator('[data-test="shopping-cart-link"]');
+        this.inventoryItem = page.locator('[data-test="inventory-item"]');
+        this.inventoryItemDetails = page.locator('[data-test="inventory-item"]');
+        this.filterDropdown = page.locator('[data-test="product_sort_container"]');
+
+        this.addToCartSauceLabsBackpackButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+        this.removeFromCartSauceLabsBackpackButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
+        this.titleSauceLabsBackpackLink = page.locator('[aria-label="View details for Sauce Labs Backpack"]').first();
+        this.imageSauceLabsBackpackImage = page.locator('[data-test="inventory-item-sauce-labs-backpack-img"]');
+
+        this.addToCartSauceLabsBikeLightButton = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
+        this.removeFromCartSauceLabsBikeLightButton = page.locator('[data-test="remove-sauce-labs-bike-light"]');
+
+        this.addToCartProductDetailsButton = page.locator('[data-test="add-to-cart"]');
+        this.removeFromCartProductDetailsButton = page.locator('[data-test="remove"]');
+        this.backToProductsButton = page.locator('[data-test="back-to-products"]');
     }
 
     async addToCartSauceLabsBackpack() {
-        await this.addToCartSauceLabsBackpack.click();
+        await this.addToCartSauceLabsBackpackButton.click();
     }
 
     async removeFromCartSauceLabsBackpack() {
-        await this.removeFromCartSauceLabsBackpack.click();
+        await this.removeFromCartSauceLabsBackpackButton.click();
     }
 
     async addToCartSauceLabsBikeLight() {
-        await this.addToCartSauceLabsBikeLight.click();
+        await this.addToCartSauceLabsBikeLightButton.click();
     }
 
     async removeFromCartSauceLabsBikeLight() {
-        await this.removeFromCartSauceLabsBikeLight.click();
+        await this.removeFromCartSauceLabsBikeLightButton.click();
     }
 
     async titleSauceLabsBackpack() {
-        await this.titleSauceLabsBackpack.click();
+        await this.titleSauceLabsBackpackLink.click();
     }
 
     async imageSauceLabsBackpack() {
-        await this.imageSauceLabsBackpack.click();
+        await this.imageSauceLabsBackpackImage.click();
     }
 
     async addToCartProductDetails() {
-        await this.addToCartProductDetails.click();
+        await this.addToCartProductDetailsButton.click();
     }
 
     async removeFromCartProductDetails() {
-        await this.removeFromCartProductDetails.click();
+        await this.removeFromCartProductDetailsButton.click();
     }
 
     async backToProducts() {
-        await this.backToProducts.click();
+        await this.backToProductsButton.click();
     }
 
     async filterOptions(option) {
-        await this.filterOptions.selectOption(option);
+        await this.filterDropdown.selectOption(option);
     }
 
-   async shoppingCart() {
-    await this.shoppingCart.click();
-   }
+    async shoppingCart() {
+        await this.shoppingCartIcon.click();
+    }
 }
