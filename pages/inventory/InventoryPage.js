@@ -18,7 +18,48 @@ export class InventoryPage {
         this.backToProducts = locator('[data-test="back-to-products"]')
         this.filterOptions = locator('[data-test="product_sort_container"]')
     }
-    async sortBy(option) {
+
+    async addToCartSauceLabsBackpack() {
+        await this.addToCartSauceLabsBackpack.click();
+    }
+
+    async removeFromCartSauceLabsBackpack() {
+        await this.removeFromCartSauceLabsBackpack.click();
+    }
+
+    async addToCartSauceLabsBikeLight() {
+        await this.addToCartSauceLabsBikeLight.click();
+    }
+
+    async removeFromCartSauceLabsBikeLight() {
+        await this.removeFromCartSauceLabsBikeLight.click();
+    }
+
+    async titleSauceLabsBackpack() {
+        await this.titleSauceLabsBackpack.click();
+    }
+
+    async imageSauceLabsBackpack() {
+        await this.imageSauceLabsBackpack.click();
+    }
+
+    async addToCartProductDetails() {
+        await this.addToCartProductDetails.click();
+    }
+
+    async removeFromCartProductDetails() {
+        await this.removeFromCartProductDetails.click();
+    }
+
+    async backToProducts() {
+        await this.backToProducts.click();
+    }
+
+    async filterOptions(option) {
         await this.filterOptions.selectOption(option);
-      }
+    }
+
+   async shoppingCart() {
+    await this.shoppingCart.click();
+   }
 }
