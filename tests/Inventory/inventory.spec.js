@@ -76,26 +76,50 @@ test('TC_Inventory_008 - Verify user can remove a product from the cart from the
 });
 
 test('TC_Inventory_009 - Verify user can add a product from the inventory page and remove it from the product details page ', async ({ inventoryPage }) => {
-     
+     await inventoryPage.addToCartSauceLabsBackpack();
+     await expect(inventoryPage.cartBadge).toBeVisible();
+     await inventoryPage.titleSauceLabsBackpack();
+     await inventoryPage.removeFromCartProductDetails();
+     await expect(inventoryPage.cartBadge).not.toBeVisible();
 
 });
 
 test('TC_Inventory_010 - Verify user can sort products by name from A to Z ', async ({ inventoryPage }) => {
-    
+    await inventoryPage.filterOptions(inventoryPage.sortValues.nameAsc);
 
+    const actualSortedProductNames = await inventoryPage.getProductNames();
+    const expectedSortedProductNames = [...actualSortedProductNames].sort();
+
+    expect(actualSortedProductNames).toEqual(expectedSortedProductNames);
 });
 
 test('TC_Inventory_011 - Verify user can sort products by name from Z to A ', async ({ inventoryPage }) => {
-    
+    await inventoryPage.filterOptions(inventoryPage.sortValues.nameDesc);
+    const actualSortedProductNames = await inventoryPage.getProductNames();
+    const expectedSortedProductNames = [...actualSortedProductNames].sort().reverse();
+    expect(actualSortedProductNames).toEqual(expectedSortedProductNames);
 
 });
 
 test('TC_Inventory_012 - Verify user can sort products by price from low to high ', async ({ inventoryPage }) => {
-    
+    await inventoryPage.filterOptions(inventoryPage.sortValues.priceAsc);
+
+    const actualSortedProductPrices = await inventoryPage.getProductPrices();
+    const expectedSortedProductPrices = [...actualSortedProductPrices].sort((a, b) => a - b);
+    console.log(actualSortedProductPrices);
+    console.log(expectedSortedProductPrices);
+
+    expect(actualSortedProductPrices).toEqual(expectedSortedProductPrices);
 
 });
 
 test('TC_Inventory_013 - Verify user can sort products by price from high to low', async ({ inventoryPage }) => {
-    
+    await inventoryPage.filterOptions(inventoryPage.sortValues.priceDesc);
+    const actualSortedProductPrices = await inventoryPage.getProductPrices();
+    const expectedSortedProductPrices = [...actualSortedProductPrices].sort((a, b) => b - a);
+    console.log(actualSortedProductPrices);
+    console.log(expectedSortedProductPrices);
+
+    expect(actualSortedProductPrices).toEqual(expectedSortedProductPrices);
 
 });

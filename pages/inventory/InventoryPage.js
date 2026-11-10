@@ -13,7 +13,7 @@ export class InventoryPage {
         this.shoppingCartIcon = page.locator('[data-test="shopping-cart-link"]');
         this.inventoryItem = page.locator('[data-test="inventory-item"]');
         this.inventoryItemDetails = page.locator('[data-test="inventory-item"]');
-        this.filterDropdown = page.locator('[data-test="product_sort_container"]');
+        this.filterDropdown = page.locator('[data-test="product-sort-container"]');
 
         this.addToCartSauceLabsBackpackButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
         this.removeFromCartSauceLabsBackpackButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
@@ -67,6 +67,15 @@ export class InventoryPage {
 
     async filterOptions(option) {
         await this.filterDropdown.selectOption(option);
+    }
+
+    async getProductNames() {
+        return await this.page.locator('.inventory_item_name').allTextContents();
+    }
+
+    async getProductPrices() {
+        const texts = await this.page.locator('.inventory_item_price').allTextContents();
+        return texts.map(t => parseFloat(t.replace('$', '')));
     }
 
     async shoppingCart() {
