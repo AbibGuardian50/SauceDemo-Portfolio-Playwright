@@ -3,8 +3,6 @@ import { loginData } from '../../test-data/login.data';
 import { checkoutPage } from '../../pages/checkout/checkoutPage';
 import { LoginPage } from '../../pages/login/LoginPage';
 
-let checkoutPage;
-
 test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     await page.goto('https://www.saucedemo.com/');
