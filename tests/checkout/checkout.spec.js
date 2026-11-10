@@ -1,6 +1,7 @@
 import { test, expect } from '../../fixtures/fixtures';
 import { loginData } from '../../test-data/login.data';
 import { checkoutPage } from '../../pages/checkout/checkoutPage';
+import { LoginPage } from '../../pages/login/LoginPage';
 
 let checkoutPage;
 
