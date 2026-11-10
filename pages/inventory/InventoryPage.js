@@ -1,5 +1,8 @@
+import { expect } from '@playwright/test';
 export class InventoryPage {
+    
     constructor(page) {
+        this.page = page;
         this.sortValues = {
             nameAsc: 'az',
             nameDesc: 'za',
@@ -23,6 +26,7 @@ export class InventoryPage {
         this.addToCartProductDetailsButton = page.locator('[data-test="add-to-cart"]');
         this.removeFromCartProductDetailsButton = page.locator('[data-test="remove"]');
         this.backToProductsButton = page.locator('[data-test="back-to-products"]');
+        this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
     }
 
     async addToCartSauceLabsBackpack() {
@@ -67,5 +71,13 @@ export class InventoryPage {
 
     async shoppingCart() {
         await this.shoppingCartIcon.click();
+    }
+
+    get cartItems() {
+        return this.page.locator('[data-test="inventory-item"]');
+    }
+    
+    async expectItemInCart(name) {
+        await expect(this.cartItems.filter({ hasText: name })).toBeVisible();
     }
 }
