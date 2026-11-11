@@ -3,22 +3,36 @@ export class CheckoutPage {
     constructor(page) {
         this.page = page;
     }
+    
+    
+    
+    async continueCheckout () {
+        await this.page.locator('[data-test="continue"]').click();
+    }
+firstNameErrorMessage () {
+    return this.page.locator('div').filter({ hasText: /^Error: First Name is required$/ }).nth(1);
+   }
 
-    async shoppingCart() {
-        await this.page.locator('[data-test="shopping-cart-link"]').click();
-    }
-    async removeFromCart() {
-        await this.page.locator('[data-test="remove-sauce-labs-backpack"]').click();
-    }
-    async continueShopping() {
-        await this.page.locator('[data-test="continue-shopping"]').click();
-    }
+    lastNameErrorMessage () {
+     return this.page.locator('div').filter({ hasText: /^Error: Last Name is required$/ }).nth(1);
+   }
+    postalCodeErrorMessage () {
+     return this.page.locator('div').filter({ hasText: /^Error: Postal Code is required$/ }).nth(1);
+   }
 
-    async checkout() {
-        await this.page.locator('[data-test="checkout"]').click();
-    }
+   async inputFirstName (firstName) {
+    await this.page.locator('[data-test="firstName"]').fill(firstName);
+   }
 
-    inventoryCartItems() {
-        return this.page.locator('[data-test="inventory-item"]');
-    }
+   async inputLastName (lastName) {
+    await this.page.locator('[data-test="lastName"]').fill(lastName);
+   }
+
+   async inputPostalCode(postalCode) {
+    await this.page.locator('[data-test="postalCode"]').fill(postalCode);
+   }
+   async cancel() {
+    await this.page.locator('[data-test="cancel"]').click();
+   }
+    
 }

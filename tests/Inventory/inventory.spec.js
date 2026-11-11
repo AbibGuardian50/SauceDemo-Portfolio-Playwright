@@ -13,7 +13,6 @@ import { test, expect } from '../../fixtures/fixtures';
     });
 
     test('TC_Inventory_001 - Verify user can add a product to the cart', async ({ inventoryPage }) => {
-        
         await inventoryPage.addToCartSauceLabsBackpack();
         await inventoryPage.shoppingCart();
         await expect(inventoryPage.inventoryItem).toBeVisible();
