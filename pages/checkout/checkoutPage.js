@@ -18,7 +18,7 @@ export class CheckoutPage {
         await this.page.locator('[data-test="checkout"]').click();
     }
 
-    async inventoryCartItems() {
+    inventoryCartItems() {
         return this.page.locator('[data-test="inventory-item"]');
     }
 }
