@@ -61,6 +61,6 @@ test('TC_Checkout_005 - Verify user can proceed if all required fields are fille
 test('TC_Checkout_006 - Verify user can navigate to cart by clicking cancel button in checkout', async ({ cartPage, checkoutPage, page }) => {
     await cartPage.shoppingCart();
     await cartPage.checkout();
-    await checkoutPage.cancel(); 
+    await checkoutPage.cancel();  
     await expect(page).toHaveURL(/cart\.html/)   
 });
